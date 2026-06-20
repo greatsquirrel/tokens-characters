@@ -1,0 +1,59 @@
+{
+  "id": "pf2e-tokens-characters",
+  "title": "Pathfinder Tokens: Character Gallery",
+  "description": "<p>Token artwork and portraits for over 1200 characters, along with a bespoke application designed to make sorting and filtering the collection a breeze!</p>",
+  "version": "1.0.1",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+   },
+  "authors": [
+    {
+        "name": "Ian Hildebrandt",
+        "discord": "tdnarbedlih"
+    },
+    {
+        "name": "Viviane Charlier",
+        "discord": "geckopilled"
+    },
+    {
+        "name": "Richard SimГµes",
+        "discord": "stwlam"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/pf2e-tokens-characters.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "path": "lang/en.json",
+      "name": "",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+        "type": "setup",
+        "caption": "Token Pack: Characters",
+        "thumbnail": "modules/pf2e-tokens-characters/assets/thumbnail.webp"
+    }
+ ],
+  "flags": {
+    "compendiumArtMappings": {
+      "pf2e": {
+        "mapping": "modules/pf2e-tokens-characters/data/compendium-map.json",
+        "credit": "<em>Portrait, token, and subject artwork from the Pathfinder Tokens: Character Gallery.</em>"
+      }
+    },
+    "tokenRingSubjectMappings": {
+      "modules/pf2e-tokens-characters/assets/tokens/": "modules/pf2e-tokens-characters/assets/subjects/"
+    }
+  },
+  "manifest": "",
+  "protected": false
+}
+
