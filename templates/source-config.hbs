@@ -1,0 +1,40 @@
+<html>
+    <section>
+    <p>Configure which available datasheets should be loaded by the art gallery.</p>
+    {{#if isGM}}
+    <p>GM users can also restrict certain sources from being loaded by players without sufficient permission.</p>
+    {{/if}}
+    </section>
+
+    <div class="buttons flexrow">
+        <button type="button" data-action="enableAll"><i class="fas fa-plus"></i> Enable All</button>
+        <button type="button" data-action="disableAll"><i class="fas fa-minus"></i> Disable All</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th data-label="The names of the datasheets that are currently loaded by the module">Datasheet</th>
+                <th data-label="How many entries are contained in this datasheet">Entries</th>
+                <th data-label="Whether or not the datasheet's contents will be included in your Gallery (Clientside setting)">Include Contents</th>
+                {{#if isGM}}
+                    <th data-label="Allows the contents of this datasheet to be hidden from player users (World setting)">Visible to Players</th>
+                {{/if}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each sources as |source|}}
+            <tr>
+                {{log source}}
+                <td>{{source.label}}</td>
+                <td>{{source.count}}</td>
+                <td><input type="checkbox" data-source="{{source.key}}" data-setting="visibility" {{checked source.visibility}}></td>
+                {{#if ../isGM}}
+                <td><input type="checkbox" data-source="{{source.key}}" data-setting="permission" {{checked source.permission}}></td>
+                {{/if}}
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+
+</html>

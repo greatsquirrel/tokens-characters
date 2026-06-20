@@ -1,0 +1,67 @@
+<aside class="sidebar info" data-application-part="details">
+  <section class="selection"{{#if selected}} data-selection={{selected.key}} style="background-image: url('{{lookup selected.art preview}}')"{{/if}}>
+    {{#if selected}}
+      <div class="header">
+        <div>
+          {{!<i data-action="toggleFavourite" data-active=false data-tooltip="Add to Favourites" class="fas fa-star"></i>}}
+          <i data-tooltip="{{concat (localize "PF2ECG.APP.TOOLTIP.source") "<br/>" selected.source }}" class="button fas fa-books"></i>
+        </div>
+        <p>{{selected.label}}</p>
+        <div>
+          <i data-action="inspectImage" data-tooltip="PF2ECG.APP.TOOLTIP.inspectImage" class="button inspectImage fas fa-magnifying-glass"></i>
+          {{#if (eq preview "token")}}
+            <i data-action="togglePreview" data-tooltip="PF2ECG.APP.TOOLTIP.togglePreviewPortrait" class="button previewPortrait fas fa-portrait"></i>
+          {{else}}
+            <i data-action="togglePreview" data-tooltip="PF2ECG.APP.TOOLTIP.togglePreviewToken" class="button previewToken fas fa-chess-pawn"></i>
+          {{/if}}
+        </div>
+      </div>
+      <section class="panel data">
+        {{#each tagGroups as |group|}}
+          {{#if (lookup ../selected.tags group.key)}}
+            <label data-tooltip="{{concat "PF2ECG.TAGS." group.key ".hint"}}">
+              <p class="key">{{localize (concat "PF2ECG.TAGS." group.key ".label")}}</p>
+              <p class="value">{{#each (lookup ../selected.tags group.key) as |tag|}}<span class="tag">{{tag}}</span>{{/each}}</p>
+            </label>
+          {{/if}}
+        {{else}}
+          {{{localize "PF2ECG.APP.HINT.noTagsFound"}}}
+        {{/each}}
+      </section>
+    {{else}}
+      <section class="panel">
+        {{{localize "PF2ECG.APP.HINT.selectionDetails"}}}
+      </section>
+    {{/if}}
+  </section>
+
+  <section class="target panel">
+    {{#if targetActor}}
+      <fieldset class="target">
+        <legend>{{localize "PF2ECG.APP.HEADER.targetActor"}}</legend>
+        <div class="target">
+          <img data-tooltip="PF2ECG.APP.TOOLTIP.targetActor" src="{{targetActor.img}}">
+          <p data-tooltip="PF2ECG.APP.TOOLTIP.targetPortrait">{{targetActor.name}}</p>
+          <img data-tooltip="PF2ECG.APP.TOOLTIP.targetToken" src="{{targetActor.prototypeToken.texture.src}}">
+        </div>
+      </fieldset>
+      {{#if selected}}
+        <button
+          type="button"
+          data-action="replaceArtwork"
+          class="replace"
+          data-tooltip="PF2ECG.APP.TOOLTIP.replaceArtwork"
+          aria-label="Assign the selected artwork to the target actor."
+        ><i class="fa-solid fa-stamp"></i>{{localize "PF2ECG.APP.BUTTON.replaceArtwork"}}</button>
+      {{/if}}
+    {{/if}}
+
+    {{#if selected}}
+      <button
+        type="button"
+        data-action="createActor"
+        data-tooltip="PF2ECG.APP.TOOLTIP.createNew"
+      ><i class="fa-solid fa-plus"></i> {{localize "PF2ECG.APP.BUTTON.createNew"}}</button>
+    {{/if}}
+  </section>
+</aside>
