@@ -53,7 +53,8 @@
       "modules/pf2e-tokens-characters/assets/tokens/": "modules/pf2e-tokens-characters/assets/subjects/"
     }
   },
-  "manifest": "",
+  "manifest": "https://raw.githubusercontent.com/greatsquirrel/tokens-characters/main/module.json",
+  "download": "https://github.com/greatsquirrel/tokens-characters/releases/download/v1.0.1/tokens-characters.zip",
   "protected": false
 }
 
